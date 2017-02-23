@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication2
+namespace Prime_4
 {
     class Program
     {
         static bool isPrime(int x)
         {
-
-            for (int i = 2; i <= Math.Sqrt(x); i ++)
+            double fr = Math.Sqrt(x);
+            for (int i = 2; i <= fr; i++)
                 if (x % i == 0) return false;
             return true;
         }
@@ -30,11 +30,18 @@ namespace ConsoleApplication2
             }
             else
             {
-                for (int i = 3; i <= Math.Sqrt(x); i+=2)
+                for (int i = 3; i <= x / 2; i += 2)
                 {
-                    if (x % i == 0 && isPrime(i) && isPrime(x/i))
+                    if (x % i == 0)
                     {
-                        return true;
+                        if (isPrime(x / i))
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                 }
                 return false;
